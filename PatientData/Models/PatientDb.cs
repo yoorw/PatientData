@@ -8,12 +8,13 @@ namespace PatientData.Models
 {
     public static class PatientDb
     {
-        public static MongoCollection<Patient> Open()
+        public static IMongoCollection<Patient> Open()
         {
             var client = new MongoClient("mongodb://localhost");
-            var server = client.GetServer();
-            var db = server.GetDatabase("PatientDb");
-            return db.GetCollection<Patient>("Patients");
+            //var server = client.GetServer();
+            var db = client.GetDatabase("PatientDb");
+            var collection = db.GetCollection<Patient>("Patients");
+            return collection;
         }
     }
 }

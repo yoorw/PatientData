@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using PatientData.Models;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,49 @@ namespace PatientData.Controllers
 {
     public class PatientsController : ApiController
     {
-        MongoCollection<Patient> _patients;
+        private IMongoCollection<Patient> Patients;
 
         public PatientsController()
         {
-            _patients = PatientDb.Open();
+            Patients = PatientDb.Open();
         }
 
         public IEnumerable<Patient> Get()
         {
-            return _patients.FindAll();
+            return Patients.Find(new BsonDocument()).ToEnumerable<Patient>();
         }
+
+        //// GET api/Patients/
+        //public IEnumerable<Patient> Get()
+        //{
+        //    return Patients.Find(new BsonDocument()).ToEnumerable<Patient>();
+        //}
+
+        //// GET api/Patients/id
+        //public IHttpActionResult Get(string id)
+        //{
+        //    var Patient = Patients.Find(f => f.Id == id);
+        //    if (Patient == null)
+        //        return NotFound();
+
+        //    return Ok(Patient.ToList());
+        //}
+
+        //// GET api/Patients/id/Medications
+        //[Route("api/Patients/{id}/Medications")]
+        //public IHttpActionResult GetMedications(string id)
+        //{
+        //    var Patient = Patients.Find(x => x.Id == id);
+
+        //    if (Patient == null)
+        //        return NotFound();
+
+        //    var Medication = Patient.FirstOrDefault().Medications;
+
+        //    if (Medication == null)
+        //        return NotFound();
+
+        //    return Ok(Medication.ToList());
+        //}
     }
 }

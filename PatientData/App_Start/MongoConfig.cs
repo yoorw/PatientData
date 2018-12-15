@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver.Linq;
+﻿using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using PatientData.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace PatientData
         {
             var patients = PatientDb.Open();
 
-            if (!patients.AsQueryable().Any(p => patients.Name == "Scott"))
+            if (!patients.AsQueryable().Any(p => p.Name == "Scott"))
             {
                 var data = new List<Patient>()
                 {
@@ -31,7 +32,7 @@ namespace PatientData
                     }
                 };
 
-                patients.InsertBatch(data);
+                patients.InsertMany(data);
             }
         }
     }

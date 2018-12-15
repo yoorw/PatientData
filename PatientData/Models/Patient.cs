@@ -13,10 +13,15 @@ namespace PatientData.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
+        //public ICollection<PatientName> Name { get; set; }
         public ICollection<Ailment> Ailments { get; set; }
         public ICollection<Medication> Medications { get; set; }
     }
 
+    public class PatientName
+    {
+        public string Name { get; set; }
+    }
     public class Medication
     {
         public string Name { get; set; }
