@@ -24,37 +24,41 @@ namespace PatientData.Controllers
             return Patients.Find(new BsonDocument()).ToEnumerable<Patient>();
         }
 
+        //public HttpResponseMessage Get(string id)
+        //{
+        //    var patient = Patients.Find(ObjectId.Parse(id));
+        //}
         //// GET api/Patients/
         //public IEnumerable<Patient> Get()
         //{
         //    return Patients.Find(new BsonDocument()).ToEnumerable<Patient>();
         //}
 
-        //// GET api/Patients/id
-        //public IHttpActionResult Get(string id)
-        //{
-        //    var Patient = Patients.Find(f => f.Id == id);
-        //    if (Patient == null)
-        //        return NotFound();
+        // GET api/Patients/id
+        public IHttpActionResult Get(string id)
+        {
+            var Patient = Patients.Find(f => f.Id == id);
+            if (Patient == null)
+                return NotFound();
 
-        //    return Ok(Patient.ToList());
-        //}
+            return Ok(Patient.ToList());
+        }
 
-        //// GET api/Patients/id/Medications
-        //[Route("api/Patients/{id}/Medications")]
-        //public IHttpActionResult GetMedications(string id)
-        //{
-        //    var Patient = Patients.Find(x => x.Id == id);
+        // GET api/Patients/id/Medications
+        [Route("api/Patients/{id}/Medications")]
+        public IHttpActionResult GetMedications(string id)
+        {
+            var Patient = Patients.Find(x => x.Id == id);
 
-        //    if (Patient == null)
-        //        return NotFound();
+            if (Patient == null)
+                return NotFound();
 
-        //    var Medication = Patient.FirstOrDefault().Medications;
+            var Medication = Patient.FirstOrDefault().Medications;
 
-        //    if (Medication == null)
-        //        return NotFound();
+            if (Medication == null)
+                return NotFound();
 
-        //    return Ok(Medication.ToList());
-        //}
+            return Ok(Medication.ToList());
+        }
     }
 }
