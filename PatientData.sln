@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2047
+VisualStudioVersion = 15.0.26228.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatientData", "PatientData\PatientData.csproj", "{F818E941-F2BA-4DFC-9888-8E658B3DAFF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsClient", "CorsClient\CorsClient.csproj", "{D84565F6-F15E-41AB-9D07-C6DC17FD6529}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F818E941-F2BA-4DFC-9888-8E658B3DAFF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F818E941-F2BA-4DFC-9888-8E658B3DAFF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F818E941-F2BA-4DFC-9888-8E658B3DAFF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D84565F6-F15E-41AB-9D07-C6DC17FD6529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D84565F6-F15E-41AB-9D07-C6DC17FD6529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D84565F6-F15E-41AB-9D07-C6DC17FD6529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D84565F6-F15E-41AB-9D07-C6DC17FD6529}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
