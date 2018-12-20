@@ -25,8 +25,21 @@
     <script>
         $(function () {
             var getPatients = function () {
-                $.get(url).always(showResponse);
+                var url = "http://localhost:58791/api/patients/";
+                //$.get(url).always(showResponse);
+                $.ajax(url, {
+                    type:"GET",
+                    headers: getHeaders()
+                }).always(showResponse);
                 return false;
+            };
+
+            var getHeaders = function () {
+                if (accessToken) {
+                    return {
+                        "Authorization": "Bearer " + accessToken
+                    };
+                }
             };
 
             var showResponse = function (object) {
@@ -41,17 +54,27 @@
                 return false;
             };
 
+            var saveAccessToken = function (data) {
+                accessToken = data.access_token;
+            };
+
             var login = function () {
                 var url = "/Token";
-                var data = $("#userData").serialize();
-                data = data + "&grant_type=password";
+                //var data = $("#userData").serialize();
+                var data = {
+                    userName: $("[name='email']").val(),
+                    password: $("[name='password']").val()
+                };
+                //data = data + "&grant_type=password";
+                data.grant_type = "password";
                 $.post(url, data)
+                    .done(saveAccessToken)
                     .always(showResponse);
 
                 return false;
             };
 
-            var url = "http://localhost:58791/api/patients/";
+            var accessToken = "";
 
             $("#login").click(login);
             $("#register").click(register);
